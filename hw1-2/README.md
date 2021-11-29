@@ -39,7 +39,6 @@
   
   _Command:_ __head -7 /etc/yum.conf__  
                       __tail -2 /etc/fstab__  
-
   _Result:_  
   ![3.1](img/3.1.png)
   
@@ -47,8 +46,7 @@
   "Что произойдёт, если мы запросим больше строк, чем есть в файле? Попробуйте выполнить это на примере, используя команду wc (word cound) для подсчёта количества строк в файле"  
   
   _Command:_ __wc /etc/yum.conf -l__  
-                      __head -50 /etc/yum.conf__    
-
+                      __head -50 /etc/yum.conf__  
   _Result:_ Выведется то количество строк, которое есть.  
   ![3.2](img/3.2.png)  
   
@@ -66,8 +64,7 @@
                       __mv file_name1.{md,textdoc}__  
                       __mv file_name2.{md,}__  
                       __mv file_name3.{md,md.latest}__  
-                      __mv file_name1.{textdoc,txt}__  
-					     
+                      __mv file_name1.{textdoc,txt}__  					     
   _Result:_  
   ![4.1](img/4.1.png)
   
@@ -85,8 +82,7 @@
 - Вопрос 1:  
   "Создайте одной командой в домашней директории 3 папки new, in-process, processed. При этом in-process должна содержать в себе еще 3 папки tread0, tread1, tread2."  
   
-  _Command:_ __mkdir -p ./new in-process/{tread0,tread1,tread2} processed__  
-    
+  _Command:_ __mkdir -p ./new in-process/{tread0,tread1,tread2} processed__      
   _Result:_  
   ![6.1](img/6.1.png)
   
@@ -94,15 +90,13 @@
   "Далее создайте 100 файлов формата data\[\[:digit:\]\]\[\[:digit:\]\] в папке new. Скопируйте 34 файла в tread0 и по 33 в tread1 и tread2 соответственно. Выведете содержимое каталога in-process одной командой."  
   
   _Command:_ __cd new/__  
-                      __touch data\[\[:{0..9}:\]\]\[\[:{0..9}:\]\]__ 
-					  
+                      __touch data\[\[:{0..9}:\]\]\[\[:{0..9}:\]\]__  
   _Result:_  		   
   ![6.2](img/6.2.png)  				   
   _Command:_ __cp $(ls | head -34)  ../in-process/tread0/__  
 					    __cp $(ls | tail -33)  ../in-process/tread2/__  
 					    __cp $(ls | (head -67 | tail -33) )  ../in-process/tread1/__  
-					    __ls -f ../in-process/*__  
-  
+					    __ls -f ../in-process/*__    
   _Result:_  
   ![6.2.1](img/6.2.1.png)
   
@@ -110,16 +104,14 @@
   "После этого переместите все файлы из каталогов tread в processed одной командой. Выведете содержимое каталога in-process и processed опять же одной командой"  
   
   _Command:_ __rsync -a --remove-source-files ../in-process/tread{0..2}/* ../processed/__  
-  **ls -f ../processed ../in-process/* **  
-  
+  **ls -f ../processed ../in-process/\* **    
   _Result:_
   ![6.3](img/6.3.png)  
 
 - Вопрос 4:  
   "Сравните количество файлов в каталогах new и processed при помощи изученных ранее команд, если они равны удалите файлы из new"  
   
-  _Command:_ __if diff ../new ../processed; then rm ../new/*; fi__
-    
+  _Command:_ __if diff ../new ../processed; then rm ../new/*; fi__    
   _Result:_
   ![6.4](img/6.4.png)  
   
@@ -134,8 +126,7 @@
   Необходимо предоставить модицицированную команду, результатом которой является следующий вывод:   
    file1 file2 file3 "  
   
-  _Command:_ __eval echo file{$a..$b}__ 
-    
+  _Command:_ __eval echo file{$a..$b}__      
   _Result:_  
   ![7.1](img/7.1.png)  
 
