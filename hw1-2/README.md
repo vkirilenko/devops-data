@@ -104,7 +104,7 @@
   "После этого переместите все файлы из каталогов tread в processed одной командой. Выведете содержимое каталога in-process и processed опять же одной командой"  
   
   _Command:_ __rsync -a --remove-source-files ../in-process/tread{0..2}/* ../processed/__  
-  **ls -f ../processed ../in-process/\* **    
+  __ls -f ../processed ../in-process/\*__    
   _Result:_
   ![6.3](img/6.3.png)  
 
