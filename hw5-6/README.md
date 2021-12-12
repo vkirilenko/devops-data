@@ -3,7 +3,7 @@
 - Вопрос 1:  
   "What is the most frequent browser?"  
   
-  _Command:_ __awk '{ FPAT="([^ ]+)|(\"[^\"]+\")|(\\[.+\\])" } {$   9; a[$9]++} END { for (i in a) print a[i], i}' access.log | sort -n -b -k1 -r | head -   1__  
+  _Command:_ __awk '{ FPAT="(\[^ ]+)|(\\"\[^\"]+\\")|(\\\\[.+\\\\])" } { a[$9]++;  if (a[$9]>max) { max=a[$9]; ua=$9} } END {print max, ua }' access.log__  
   _Result:_  
   ![1.1](img/1.1.png)
 
