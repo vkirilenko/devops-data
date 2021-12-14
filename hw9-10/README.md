@@ -25,10 +25,10 @@
   ![1.3](img/1.3.png)
   
 - Вопрос 5: 
-  "To other send a SIGCONT in two different ways."
+  "To other send a SIGCONT in two different ways."  
   
-  _Command:_ __kill -SIGCONT %2; kill -SIGCONT 3296__ 
-  _Result:_
+  _Command:_ __kill -SIGCONT %2; kill -SIGCONT 3296__     
+  _Result:_  
   ![1.4](img/1.4.png)
   
 - Вопрос 6: 
@@ -52,9 +52,9 @@
   ![2.2](img/2.2.png)
   
 - Вопрос 3:   
-  "Write a timer for the second one and configure it to run on 01.01.2019 at 00:00"
+  "Write a timer for the second one and configure it to run on 01.01.2019 at 00:00"    
   
-   _Result:_
+   _Result:_  
   ![2.3](img/2.3.png)
   
 - Вопрос 4: 
@@ -91,7 +91,7 @@
 - Вопрос 3:   
   "Restart your virtual machine and check previous job proper execution"
   
-  _Result:_ 
+  _Result:_   
   ![3.02](img/3.02.png)   
   ![3.1](img/3.1.png)   
      
@@ -122,5 +122,5 @@
   
   _Command:_ __sudo lsof -i TCP__  
   
-  _Result:_  
+  _Result:_    
   ![4.3](img/4.3.png)
