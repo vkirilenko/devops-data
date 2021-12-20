@@ -30,7 +30,7 @@
   
   _Command:_ __ssh-keygen -t rsa__    
   _Result:_   
-  vladimir@localhost:~$ cd .ssh  
+  vladimir@localhost:\~$ cd .ssh  
   vladimir@localhost:\~/.ssh$ ssh-keygen -t rsa  
   Generating public/private rsa key pair.  
   Enter file in which to save the key (/home/vladimir/.ssh/id_rsa): hw-5  
@@ -76,9 +76,9 @@
 - Вопрос 4:  
   "SSH to remotehost without password. Log out from remotehost."  
     
-  _Command:_ __ssh -i ~/.ssh/hw-5 Vladimir_Kirilenko@18.221.144.175__   
+  _Command:_ __ssh -i \~/.ssh/hw-5 Vladimir_Kirilenko@18.221.144.175__   
   _Result:_      
-  vladimir@localhost:\~$ ssh -i ~/.ssh/hw-5 Vladimir_Kirilenko@18.221.144.175  
+  vladimir@localhost:\~$ ssh -i \~/.ssh/hw-5 Vladimir_Kirilenko@18.221.144.175  
   Last login: Fri Dec 17 09:53:46 2021 from 178.252.127.228  
 
        __|  __|_  )
@@ -176,7 +176,7 @@
     
   _Command:_ __tzselect__  
   _Result:_    
-  vladimir@localhost:~$ tzselect  
+  vladimir@localhost:\~$ tzselect  
   Please identify a location so that time zone rules can be set correctly.  
   Please select a continent or ocean.  
    1) Africa  
@@ -244,9 +244,9 @@
     
   _Command:_ __journalctl -u *.service _UID=81 --since "2021-12-17 16:15:00"__  
   _Result:_    
-  vladimir@localhost:~$ journalctl -u *.service _UID=81 --since "2021-12-17 16:15:00"  
+  vladimir@localhost:\~$ journalctl -u *.service _UID=81 --since "2021-12-17 16:15:00"  
   -- No entries --  
-  vladimir@localhost:~$  
+  vladimir@localhost:\~$  
 
    
 - Вопрос 3:  
