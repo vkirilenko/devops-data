@@ -91,10 +91,10 @@
   [Vladimir_Kirilenko@ip-172-31-33-155 ~]$ exit  
   logout  
   Connection to 18.221.144.175 closed.  
-  vladimir@localhost:~$  
+  vladimir@localhost:\~$  
 
 - Вопрос 5:  
-  "Create SSH config file, so that you can SSH to remotehost simply running `ssh remotehost` command. As a result, provide output of command `cat ~/.ssh/config`."  
+  "Create SSH config file, so that you can SSH to remotehost simply running `ssh remotehost` command. As a result, provide output of command `cat \~/.ssh/config`."  
   
   _Command:_ __cat \~/.ssh/config__    
   _Result:_      
