@@ -162,6 +162,10 @@
 
 - Вопрос 9:  
   "Open webserver webpage in browser of your Host machine of VirtualBox (Windows, or Mac, or whatever else you use). You may need to setup port forwarding in settings of VirtualBox."  
+  
+  _Command:_ __firewall-cmd --zone=public --add-port=8080/tcp --permanent__  
+  _Result:_   
+  ![12](img/12.png)
 
 
   
