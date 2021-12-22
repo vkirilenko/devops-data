@@ -150,11 +150,11 @@ sdb
 └─sdb2 swap                    025bdc2b-f4ee-40c6-8f16-7f35fda2d4e1   [SWAP]
 sr0    iso9660  VBox_GAs_6.1.28
                                2021-10-18-18-19-23-40
-vladimir@localhost:~$ swapon -s
+vladimir@localhost:\~$ swapon -s
 Filename                                Type            Size    Used    Priority
 /dev/sdb2                               partition       498008  0       -2
 /dev/dm-1                               partition       839676  0       -3
-vladimir@localhost:~$ free -k
+vladimir@localhost:\~$ free -k
               total        used        free      shared  buff/cache   available
 Mem:        3880236      195156     3475888        8828      209192     3458852
 Swap:       1337684           0     1337684
