@@ -136,7 +136,7 @@ UUID=c1d7ae72-c0d6-4265-af89-81b94b386056 /boot                   xfs     defaul
 Using username "vladimir".
 vladimir@127.0.0.1's password:
 Last login: Wed Dec 22 19:18:16 2021 from gateway
-vladimir@localhost:~$ lsblk -f
+vladimir@localhost:\~$ lsblk -f
 NAME   FSTYPE   LABEL          UUID                                   MOUNTPOINT
 sda
 ├─sda1 xfs                     c1d7ae72-c0d6-4265-af89-81b94b386056   /boot
