@@ -1,17 +1,9 @@
 ## _Задача 1_  
 
-- Вопрос 1:  
- "Use rpm for the following tasks:"  
+-  "Use rpm for the following tasks:"  
   1. Download sysstat package.  
-  2. Get information from downloaded sysstat package file.  
-  3. Install sysstat package and get information about files installed by this package.   
-  
-  _Command:_ __wget http://mirror.centos.org/centos/7/os/x86_64/Packages/sysstat-10.1.5-19.el7.x86_64.rpm__  
-                __rpm -qip sysstat-10.1.5-19.el7.x86_64.rpm__  
-			    __rpm -ivh sysstat-10.1.5-19.el7.x86_64.rpm__  
-			    __rpm -ql sysstat__  
-  _Result:_  
-vladimir@localhost:\~$ wget http://mirror.centos.org/centos/7/os/x86_64/Packages/sysstat-10.1.5-19.el7.x86_64.rpm  
+```
+vladimir@localhost:~$ wget http://mirror.centos.org/centos/7/os/x86_64/Packages/sysstat-10.1.5-19.el7.x86_64.rpm  
 --2021-12-21 00:58:22--  http://mirror.centos.org/centos/7/os/x86_64/Packages/sysstat-10.1.5-19.el7.x86_64.rpm  
 Resolving mirror.centos.org (mirror.centos.org)... 185.50.225.30, 2604:1380:2001:d00::3  
 Connecting to mirror.centos.org (mirror.centos.org)|185.50.225.30|:80... connected.  
@@ -22,9 +14,12 @@ Saving to: ‘sysstat-10.1.5-19.el7.x86_64.rpm’
   100%[======================================================>] 323,020    518KB/s   in 0.6s  
   
   2021-12-21 00:58:23 (518 KB/s) - ‘sysstat-10.1.5-19.el7.x86_64.rpm’ saved [323020/323020]  
-  
+```  
 
-vladimir@localhost:\~$ rpm -qip sysstat-10.1.5-19.el7.x86_64.rpm  
+  2. Get information from downloaded sysstat package file.  
+
+```
+vladimir@localhost:~$ rpm -qip sysstat-10.1.5-19.el7.x86_64.rpm  
 Name        : sysstat  
 Version     : 10.1.5  
 Release     : 19.el7  
@@ -59,8 +54,13 @@ The mpstat command reports global and per-processor statistics.
 The pidstat command reports statistics for Linux tasks (processes).  
 The nfsiostat-sysstat command reports I/O statistics for network file systems.  
 The cifsiostat command reports I/O statistics for CIFS file systems.  
+```
+
+
+  3. Install sysstat package and get information about files installed by this package.   
   
-vladimir@localhost:\~$ sudo rpm -ivh sysstat-10.1.5-19.el7.x86_64.rpm  --nodeps  
+```
+vladimir@localhost:~$ sudo rpm -ivh sysstat-10.1.5-19.el7.x86_64.rpm  --nodeps  
 Preparing...                          ################################# [100%]  
 Updating / installing...  
    1:sysstat-10.1.5-19.el7            ################################# [100%]    
@@ -133,26 +133,14 @@ vladimir@localhost:~$ rpm -ql sysstat
 /usr/share/man/man8/sa2.8.gz  
 /usr/share/man/man8/sadc.8.gz  
 /var/log/sa  
-  
+```  
    
-- Вопрос 2:  
-  "Add NGINX repository (need to find repository config on https://www.nginx.com/) and complete the following tasks using yum:"  
+-  "Add NGINX repository (need to find repository config on https://www.nginx.com/) and complete the following tasks using yum:"  
+
   1. Check if NGINX repository enabled or not.  
-  2. Install NGINX.  
-  3. Check yum history and undo NGINX installation.  
-  4. Disable NGINX repository.  
-  5. Remove sysstat package installed in the first task.  
-  6. Install EPEL repository and get information about it.  
-  7. Find how much packages provided exactly by EPEL repository.  
-  8. Install ncdu package from EPEL repo.  
-    
-  _Command:_ __ls -la /etc/yum.repos.d__    
-                  __sudo yum install nginx__   
-			      __sudo yum history; sudo yum erase nginx__   
-			      __yum repoinfo epel__    
-			      __sudo yum repo-pkgs epel install ncdu__    
-  _Result:_   
-vladimir@localhost:\~$ ls -la /etc/yum.repos.d  
+  
+```
+vladimir@localhost:~$ ls -la /etc/yum.repos.d  
 total 60  
 drwxr-xr-x.  2 root root  262 Dec  4 11:14 ./  
 drwxr-xr-x. 86 root root 8192 Dec 21 21:31 ../  
@@ -181,7 +169,11 @@ drwxr-xr-x. 86 root root 8192 Dec 21 21:31 ../
   
 \# PUT YOUR REPOS HERE OR IN separate files named file.repo  
 \# in /etc/yum.repos.d  
-  
+```
+
+  2. Install NGINX.  
+
+```
 vladimir@localhost:~$ sudo yum install nginx  
 Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager  
   
@@ -189,10 +181,10 @@ This system is not registered with an entitlement server. You can use subscripti
   
 Loading mirror speeds from cached hostfile  
 epel/x86_64/metalink                                                                             |  33 kB  00:00:00  
- \* base: mirror.reconn.ru  
- \* epel: mirror.cspacehostings.com  
- \* extras: mirror.reconn.ru  
- \* updates: mirrors.datahouse.ru  
+ * base: mirror.reconn.ru  
+ * epel: mirror.cspacehostings.com  
+ * extras: mirror.reconn.ru  
+ * updates: mirrors.datahouse.ru  
 base                                                                                             | 3.6 kB  00:00:00  
 epel                                                                                             | 4.7 kB  00:00:00  
 extras                                                                                           | 2.9 kB  00:00:00  
@@ -220,9 +212,9 @@ Resolving Dependencies
   
 Dependencies Resolved  
   
-\========================================================================================================================  
+========================================================================================================================  
  Package                           Arch                    Version                          Repository             Size  
-\========================================================================================================================  
+========================================================================================================================  
 Installing:  
  nginx                             x86_64                  1:1.20.1-9.el7                   epel                  587 k  
 Installing for dependencies:  
@@ -232,7 +224,7 @@ Installing for dependencies:
  openssl11-libs                    x86_64                  1:1.1.1k-2.el7                   epel                  1.5 M  
   
 Transaction Summary  
-\========================================================================================================================  
+========================================================================================================================  
 Install  1 Package (+4 Dependent packages)  
   
 Total download size: 2.4 M  
@@ -244,14 +236,14 @@ Downloading packages:
 (3/5): nginx-1.20.1-9.el7.x86_64.rpm                                                             | 587 kB  00:00:00  
 (4/5): nginx-filesystem-1.20.1-9.el7.noarch.rpm                                                  |  24 kB  00:00:00  
 (5/5): openssl11-libs-1.1.1k-2.el7.x86_64.rpm                                                    | 1.5 MB  00:00:00  
-\------------------------------------------------------------------------------------------------------------------------  
+------------------------------------------------------------------------------------------------------------------------  
 Total                                                                                   3.0 MB/s | 2.4 MB  00:00:00  
 Running transaction check  
 Running transaction test  
 Transaction test succeeded  
 Running transaction  
 Warning: RPMDB altered outside of yum.  
-\*\* Found 1 pre-existing rpmdb problem(s), 'yum check' output follows:  
+** Found 1 pre-existing rpmdb problem(s), 'yum check' output follows:  
 sysstat-10.1.5-19.el7.x86_64 has missing requires of libsensors.so.4()(64bit)  
   Installing : 1:openssl11-libs-1.1.1k-2.el7.x86_64                                                                 1/5  
   Installing : gperftools-libs-2.6.1-1.el7.x86_64                                                                   2/5  
@@ -272,14 +264,18 @@ Dependency Installed:
   openssl11-libs.x86_64 1:1.1.1k-2.el7  
   
 Complete!  
+```
   
-vladimir@localhost:\~$ sudo yum history  
+  3. Check yum history and undo NGINX installation.  
+  
+```
+vladimir@localhost:~$ sudo yum history  
 Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager  
   
 This system is not registered with an entitlement server. You can use subscription-manager to register.  
   
 ID     | Command line             | Date and time    | Action(s)      | Altered    
-\-------------------------------------------------------------------------------    
+-------------------------------------------------------------------------------    
     28 | install nginx            | 2021-12-21 21:31 | Install        |    5 P<  
     27 | update                   | 2021-12-21 00:11 | I, U           |    4 >  
     26 | install python3          | 2021-12-20 19:35 | Install        |    4  
@@ -301,43 +297,68 @@ ID     | Command line             | Date and time    | Action(s)      | Altered
     10 | install bzip2            | 2021-12-03 19:46 | Install        |    1  
      9 | install nfs-utils        | 2021-12-03 19:34 | Install        |   16  
 history list  
+```  
   
-vladimir@localhost:\~$ sudo yum erase nginx  
-Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager  
+  4. Disable NGINX repository.  
+
+```
+vladimir@localhost:~$ sudo yum update --disablerepo=nginx
+Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Loading mirror speeds from cached hostfile
+ * base: mirror.tversu.ru
+ * extras: mirror.axelname.ru
+ * updates: mirrors.datahouse.ru
+No packages marked for update
+```
   
-This system is not registered with an entitlement server. You can use subscription-manager to register.  
+  5. Remove sysstat package installed in the first task.  
+
+```
+vladimir@localhost:~$ sudo yum erase sysstat
+Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-
+              : manager
+
+This system is not registered with an entitlement server. You can use subscripti                      on-manager to register.
+
+Resolving Dependencies
+--> Running transaction check
+---> Package sysstat.x86_64 0:10.1.5-19.el7 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package         Arch           Version                 Repository         Size
+================================================================================
+Removing:
+ sysstat         x86_64         10.1.5-19.el7           installed         1.1 M
+
+Transaction Summary
+================================================================================
+Remove  1 Package
+
+Installed size: 1.1 M
+Is this ok [y/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Erasing    : sysstat-10.1.5-19.el7.x86_64                                 1/1
+  Verifying  : sysstat-10.1.5-19.el7.x86_64                                 1/1
+
+Removed:
+  sysstat.x86_64 0:10.1.5-19.el7
+
+Complete!
+```
   
-Resolving Dependencies  
---> Running transaction check  
----> Package nginx.x86_64 1:1.20.1-9.el7 will be erased  
---> Finished Dependency Resolution  
-  
-Dependencies Resolved  
-  
-\========================================================================================================================  
- Package                  Arch                      Version                              Repository                Size  
-\========================================================================================================================  
-Removing:  
- nginx                    x86_64                    1:1.20.1-9.el7                       @epel                    1.7 M  
-  
-Transaction Summary  
-\========================================================================================================================  
-Remove  1 Package  
-  
-Installed size: 1.7 M  
-Is this ok \[y/N\]: y  
-Downloading packages:  
-Running transaction check  
-Running transaction test  
-Transaction test succeeded  
-Running transaction  
-  Erasing    : 1:nginx-1.20.1-9.el7.x86_64                                                                          1/1  
-  Verifying  : 1:nginx-1.20.1-9.el7.x86_64                                                                          1/1  
-  
-Removed:  
-  nginx.x86_64 1:1.20.1-9.el7  
-  
-Complete!    
+  6. Install EPEL repository and get information about it.  
+
+```
   
 vladimir@localhost:\~$ yum repoinfo epel  
 Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager  
@@ -351,7 +372,7 @@ Repo-name    : Extra Packages for Enterprise Linux 7 - x86_64
 Repo-status  : enabled  
 Repo-revision: 1640051136  
 Repo-updated : Tue Dec 21 04:51:14 2021  
-__Repo-pkgs    : 13,694__   
+Repo-pkgs    : 13,694   
 Repo-size    : 16 G  
 Repo-metalink: https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=x86_64&infra=stock&content=centos  
   Updated    : Tue Dec 21 04:51:14 2021  
@@ -360,19 +381,31 @@ Repo-expire  : 21,600 second(s) (last: Tue Dec 21 21:31:29 2021)
   Filter     : read-only:present  
 Repo-filename: /etc/yum.repos.d/epel.repo  
   
-__repolist: 13,694__  
+repolist: 13,694 
+```
+
   
+  7. Find how much packages provided exactly by EPEL repository.  
+
+```
+...
+Repo-pkgs    : 13,694
+...
+```
   
-vladimir@localhost:\~$ sudo yum repo-pkgs epel install ncdu  
+  8. Install ncdu package from EPEL repo.  
+    
+ ``` 
+vladimir@localhost:~$ sudo yum repo-pkgs epel install ncdu  
 Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager  
   
 This system is not registered with an entitlement server. You can use subscription-manager to register.  
   
 Loading mirror speeds from cached hostfile  
- \* base: mirror.tversu.ru  
- \* epel: mirror.cspacehostings.com  
- \* extras: mirror.axelname.ru  
- \* updates: mirrors.datahouse.ru  
+ * base: mirror.tversu.ru  
+ * epel: mirror.cspacehostings.com  
+ * extras: mirror.axelname.ru  
+ * updates: mirrors.datahouse.ru  
 Resolving Dependencies  
 --> Running transaction check  
 ---> Package ncdu.x86_64 0:1.16-1.el7 will be installed  
@@ -380,19 +413,19 @@ Resolving Dependencies
   
 Dependencies Resolved  
   
-\========================================================================================================================  
+========================================================================================================================  
  Package                   Arch                        Version                          Repository                 Size  
-\========================================================================================================================  
+========================================================================================================================  
 Installing:  
  ncdu                      x86_64                      1.16-1.el7                       epel                       53 k  
   
 Transaction Summary  
-\========================================================================================================================  
+========================================================================================================================  
 Install  1 Package  
   
 Total download size: 53 k  
 Installed size: 89 k  
-Is this ok \[y/d/N\]: y  
+Is this ok [y/d/N]: y  
 Downloading packages:  
 ncdu-1.16-1.el7.x86_64.rpm                                                                       |  53 kB  00:00:00  
 Running transaction check  
@@ -406,16 +439,15 @@ Installed:
   ncdu.x86_64 0:1.16-1.el7  
   
 Complete!  
-  
+```  
     
 ## _Задача 2_  
   
 - Вопрос 1:    
   "Find all regular files below 100 bytes inside your home directory"  
-    
-  _Command:_ __find ~ -type f -size -100k -exec ls -lh {} +__  
-  _Result:_    
-vladimir@localhost:\~$ find ~ -type f -size -100k -exec ls -lh {} +  
+ 
+ ```
+ vladimir@localhost:~$ find ~ -type f -size -100k -exec ls -lh {} +  
 -rw-rw-r--. 1 vladimir vladimir    0 Dec  8 19:05 /home/vladimir/1out.txt  
 -rw-rw-r--. 1 vladimir vladimir    0 Dec  8 19:05 /home/vladimir/2err.txt  
 -rw-rw-r--. 1 vladimir vladimir   24 Dec  3 17:49 /home/vladimir/abs_path.txt  
@@ -438,21 +470,19 @@ vladimir@localhost:\~$ find ~ -type f -size -100k -exec ls -lh {} +
 -rw-rw-r--. 1 vladimir vladimir    0 Dec  8 17:59 /home/vladimir/task2.txt  
 -rw-rw-r--. 1 vladimir vladimir   24 Dec  8 18:00 /home/vladimir/Temp/err.log  
 -rw-rw-r--. 1 vladimir vladimir  967 Dec  7 21:47 /home/vladimir/.toprc  
-    
+ ```   
     
 - Вопрос 2:  
   "Find an inode number and a hard links count for the root directory. The hard link count should be about 17. Why?"  
     
-  _Command:_ __ls -ia /__  
-               __stat /__  
-  _Result:_  
-vladimir@localhost:\~$ ls -ia /  
+```
+vladimir@localhost:~$ ls -ia /  
       64 .         1025 dev         82 lib64         1 proc   8426163 share   8460952 usr  
       64 ..     4194369 etc   12583333 media   8409153 root   8460991 srv    12582977 var  
      120 bin    8460990 home        83 mnt        8060 run          1 sys  
       64 boot       124 lib    4195356 opt         125 sbin   4194376 tmp  
 	    
-vladimir@localhost:\~$ stat /  
+vladimir@localhost:~$ stat /  
   File: ‘/’  
   Size: 237             Blocks: 0          IO Block: 4096   directory    
 Device: fd00h/64768d    Inode: 64          Links: 18  
@@ -464,14 +494,13 @@ Change: 2021-12-08 15:33:01.204733328 +0300
  Birth: -  
   _Answer:_     
   Each real directory is a hardlink by nature, so root directory has all hardlinks for subdirectories and hardlink to itself. Some sudirectories are soft links to other directories, so they are not counted as hardlinks.    
-  
+```  
    
 - Вопрос 3:  
   "Check what inode numbers have "/" and "/boot" directory. Why?"  
     
-  _Command:_ __ls -ila /; findmnt__   
-  _Result:_  
-vladimir@localhost:\~$ ls -ila /  
+```  
+vladimir@localhost:~$ ls -ila /  
 total 20  
       64 dr-xr-xr-x.  18 root root  237 Dec  8 15:33 .  
       64 dr-xr-xr-x.  18 root root  237 Dec  8 15:33 ..  
@@ -479,7 +508,7 @@ total 20
       64 dr-xr-xr-x.   5 root root 4096 Dec 21 20:45 boot  
 	  ....  
 	    
-vladimir@localhost:\~$ findmnt    
+vladimir@localhost:~$ findmnt    
 TARGET                                SOURCE      FSTYPE     OPTIONS  
 /                                     /dev/mapper/centos-root  
                                                   xfs        rw,relatime,seclabel,attr2,inode64,noquo  
@@ -516,30 +545,28 @@ TARGET                                SOURCE      FSTYPE     OPTIONS
   
    _Answer:_     
    These are different mount points for different devices/filesystems, so they can share same inode number without real cross.   
-  
+```  
     
 - Вопрос 4:  
   "Check the root directory space usage by du command. Compare it with an information from df. If you find differences, try to find out why it happens."  
     
-  _Command:_ __sudo du -sh /; df -h /__   
-  _Result:_  
-vladimir@localhost:\~$ sudo du -sh /  
+```
+vladimir@localhost:~$ sudo du -sh /  
 du: cannot access ‘/proc/5004/task/5004/fd/3’: No such file or directory  
 du: cannot access ‘/proc/5004/task/5004/fdinfo/3’: No such file or directory  
 du: cannot access ‘/proc/5004/fd/4’: No such file or directory  
 du: cannot access ‘/proc/5004/fdinfo/4’: No such file or directory  
 2.7G    /  
-vladimir@localhost:\~$ df -h /  
+vladimir@localhost:~$ df -h /  
 Filesystem               Size  Used Avail Use% Mounted on  
 /dev/mapper/centos-root  6.2G  2.6G  3.7G  41% /  
-  
+```  
     
 - Вопрос 5:  
   "Check disk space usage of /var/log directory using ncdu"  
     
-  _Command:_ __ncdu /var/log__   
-  _Result:_  
-vladimir@localhost:\~$ ncdu /var/log  
+```
+vladimir@localhost:~$ ncdu /var/log  
 ncdu 1.16 ~ Use the arrow keys to navigate, press ? for help  
 --- /var/log ----------------------------------------------------------------------------------------  
     1.9 MiB \[##############] /anaconda  
@@ -553,4 +580,4 @@ ncdu 1.16 ~ Use the arrow keys to navigate, press ? for help
    64.0 KiB \[              ]  boot.log-20211220  
    36.0 KiB \[              ]  boot.log-20211217  
 .....  
-
+```
