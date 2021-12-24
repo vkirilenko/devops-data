@@ -155,20 +155,6 @@ drwxr-xr-x. 86 root root 8192 Dec 21 21:31 ../
 -rw-r--r--.  1 root root 1358 Sep  4 20:37 epel.repo  
 -rw-r--r--.  1 root root 1457 Sep  4 20:37 epel-testing.repo  
 -rw-r--r--.  1 root root  573 Dec 21 23:18 nginx.repo  
-  
-  
-\#  This is the default, if you make this bigger yum won't see if the metadata  
-\# is newer on the remote and so you'll "gain" the bandwidth of not having to  
-\# download the new metadata and "pay" for it by yum not having correct  
-\# information.  
-\#  It is esp. important, to have correct metadata, for distributions like  
-\# Fedora which don't keep old packages around. If you don't like this checking  
-\# interupting your command line usage, it's much better to have something  
-\# manually check the metadata once an hour (yum-updatesd will do this).  
-\# metadata_expire=90m  
-  
-\# PUT YOUR REPOS HERE OR IN separate files named file.repo  
-\# in /etc/yum.repos.d  
 ```
 
   2. Install NGINX.  
@@ -297,6 +283,67 @@ ID     | Command line             | Date and time    | Action(s)      | Altered
     10 | install bzip2            | 2021-12-03 19:46 | Install        |    1  
      9 | install nfs-utils        | 2021-12-03 19:34 | Install        |   16  
 history list  
+
+vladimir@localhost:~$ sudo yum history undo 28
+Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-
+              : manager
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Undoing transaction 28, from Tue Dec 21 21:31:42 2021
+    Dep-Install centos-indexhtml-7-9.el7.centos.noarch @base
+    Dep-Install gperftools-libs-2.6.1-1.el7.x86_64     @base
+    Install     nginx-1:1.20.1-9.el7.x86_64            @epel
+    Dep-Install nginx-filesystem-1:1.20.1-9.el7.noarch @epel
+    Dep-Install openssl11-libs-1:1.1.1k-2.el7.x86_64   @epel
+No package matched to remove: nginx-1:1.20.1-9.el7
+Resolving Dependencies
+--> Running transaction check
+---> Package centos-indexhtml.noarch 0:7-9.el7.centos will be erased
+---> Package gperftools-libs.x86_64 0:2.6.1-1.el7 will be erased
+---> Package nginx-filesystem.noarch 1:1.20.1-9.el7 will be erased
+---> Package openssl11-libs.x86_64 1:1.1.1k-2.el7 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+==================================================================================
+ Package                 Arch          Version                 Repository    Size
+==================================================================================
+Removing:
+ centos-indexhtml        noarch        7-9.el7.centos          @base         90 k
+ gperftools-libs         x86_64        2.6.1-1.el7             @base        1.3 M
+ nginx-filesystem        noarch        1:1.20.1-9.el7          @epel        0.0
+ openssl11-libs          x86_64        1:1.1.1k-2.el7          @epel        3.6 M
+Not installed:
+ nginx                   x86_64        1:1.20.1-9.el7          -            0.0
+
+Transaction Summary
+==================================================================================
+Remove         4 Packages
+Not installed  1 Package
+
+Installed size: 5.0 M
+Is this ok [y/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Erasing    : centos-indexhtml-7-9.el7.centos.noarch                         1/4
+  Erasing    : 1:nginx-filesystem-1.20.1-9.el7.noarch                         2/4
+  Erasing    : gperftools-libs-2.6.1-1.el7.x86_64                             3/4
+  Erasing    : 1:openssl11-libs-1.1.1k-2.el7.x86_64                           4/4
+  Verifying  : 1:nginx-filesystem-1.20.1-9.el7.noarch                         1/4
+  Verifying  : centos-indexhtml-7-9.el7.centos.noarch                         2/4
+  Verifying  : 1:openssl11-libs-1.1.1k-2.el7.x86_64                           3/4
+  Verifying  : gperftools-libs-2.6.1-1.el7.x86_64                             4/4
+
+Removed:
+  centos-indexhtml.noarch 0:7-9.el7.centos  gperftools-libs.x86_64 0:2.6.1-1.el7
+  nginx-filesystem.noarch 1:1.20.1-9.el7    openssl11-libs.x86_64 1:1.1.1k-2.el7
+
+Complete!
 ```  
   
   4. Disable NGINX repository.  
@@ -360,7 +407,7 @@ Complete!
 
 ```
   
-vladimir@localhost:\~$ yum repoinfo epel  
+vladimir@localhost:~$ yum repoinfo epel  
 Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager  
 Determining fastest mirrors  
  * base: mirror.sale-dedic.com  
@@ -447,29 +494,16 @@ Complete!
   "Find all regular files below 100 bytes inside your home directory"  
  
  ```
- vladimir@localhost:~$ find ~ -type f -size -100k -exec ls -lh {} +  
--rw-rw-r--. 1 vladimir vladimir    0 Dec  8 19:05 /home/vladimir/1out.txt  
--rw-rw-r--. 1 vladimir vladimir    0 Dec  8 19:05 /home/vladimir/2err.txt  
--rw-rw-r--. 1 vladimir vladimir   24 Dec  3 17:49 /home/vladimir/abs_path.txt  
--rw-rw-r--. 1 vladimir vladimir  777 Dec  8 17:49 /home/vladimir/awkENV.txt  
--rw-r--r--. 1 vladimir vladimir 3.3K Nov 29 22:35 /home/vladimir/.bashrc  
--rw-rw-r--. 1 vladimir vladimir  664 Dec  7 21:39 /home/vladimir/.config/htop/htoprc  
--rw-rw-r--. 1 vladimir vladimir 3.3K Dec  6 22:40 /home/vladimir/Download/Logs/test.log  
--rwxrwxr-x. 1 vladimir vladimir  120 Dec  8 20:10 /home/vladimir/echo_delay.sh  
--rwxrwxrwx. 1 vladimir vladimir   89 Dec  8 19:49 /home/vladimir/echo.sh  
--rw-rw-r--. 1 vladimir vladimir   58 Dec  8 17:59 /home/vladimir/err.log  
--rw-rw-r--. 1 vladimir vladimir   55 Dec  3 18:29 /home/vladimir/errors.txt  
--rw-------. 1 vladimir vladimir  234 Dec 20 22:07 /home/vladimir/.lesshst  
--rwxrwxr-x. 1 vladimir vladimir  642 Dec  8 18:14 /home/vladimir/ls_abs.sh  
--rw-rw-r--. 1 vladimir vladimir  169 Dec 14 20:50 /home/vladimir/.profile  
--rwxrwxr-x. 1 vladimir vladimir  320 Dec  3 17:26 /home/vladimir/script_up.sh  
--rw-------. 1 vladimir vladimir  118 Dec 15 00:45 /home/vladimir/.ssh/config  
--rw-------. 1 vladimir vladimir 1.7K Dec 15 00:03 /home/vladimir/.ssh/hw-5  
--rw-r--r--. 1 vladimir vladimir  412 Dec 15 00:03 /home/vladimir/.ssh/hw-5.pub  
--rw-r--r--. 1 vladimir vladimir  347 Dec 15 02:12 /home/vladimir/.ssh/known_hosts  
--rw-rw-r--. 1 vladimir vladimir    0 Dec  8 17:59 /home/vladimir/task2.txt  
--rw-rw-r--. 1 vladimir vladimir   24 Dec  8 18:00 /home/vladimir/Temp/err.log  
--rw-rw-r--. 1 vladimir vladimir  967 Dec  7 21:47 /home/vladimir/.toprc  
+vladimir@localhost:~$ find ~ -type f -size -100c -exec ls -lh {} +
+-rw-rw-r--. 1 vladimir vladimir  0 Dec  8 19:05 /home/vladimir/1out.txt
+-rw-rw-r--. 1 vladimir vladimir  0 Dec  8 19:05 /home/vladimir/2err.txt
+-rw-rw-r--. 1 vladimir vladimir 24 Dec  3 17:49 /home/vladimir/abs_path.txt
+-rwxrwxrwx. 1 vladimir vladimir 89 Dec  8 19:49 /home/vladimir/echo.sh
+-rw-rw-r--. 1 vladimir vladimir 58 Dec  8 17:59 /home/vladimir/err.log
+-rw-rw-r--. 1 vladimir vladimir 55 Dec  3 18:29 /home/vladimir/errors.txt
+-rw-rw-r--. 1 vladimir vladimir  0 Dec  8 17:59 /home/vladimir/task2.txt
+-rw-rw-r--. 1 vladimir vladimir 24 Dec  8 18:00 /home/vladimir/Temp/err.log
+
  ```   
     
 - Вопрос 2:  
@@ -560,6 +594,8 @@ du: cannot access ‘/proc/5004/fdinfo/4’: No such file or directory
 vladimir@localhost:~$ df -h /  
 Filesystem               Size  Used Avail Use% Mounted on  
 /dev/mapper/centos-root  6.2G  2.6G  3.7G  41% /  
+
+The difference in used size depends on how each program evaluates occupied space. "du" uses system information, while the "df" checks each block of data.
 ```  
     
 - Вопрос 5:  
