@@ -132,6 +132,8 @@ vladimir@localhost:~$ sudo vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
 ## _Task 2_
   "You should have a possibility to use ssh client to connect to your node using new address from previous step. Run tcpdump in separate tmux session or separate connection before starting ssh client and capture packets that are related to this ssh connection. Find packets that are related to TCP session establish."  
   
+  ![2](img/2.png)
+  
 _New address use:_
 ```
 reading from file tcpdump.pcap, link-type EN10MB (Ethernet)
