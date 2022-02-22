@@ -143,7 +143,6 @@ FD) echo "Creating two files with size: " $file ;
     fi ;;
 FULLSTART) docker-compose up -d;
            echo "Start formatting..."; docker exec -u hdfs -it namenode_namenode_1 /bin/bash -c "/opt/hadoop-3.1.2/bin/hdfs namenode -format cluster1"; 
-           docker exec -u hdfs -d namenode_namenode_1 /bin/bash -c "/opt/hadoop-3.1.2/bin/hdfs namenode -format cluster1";
            docker exec -u hdfs -d namenode_namenode_1 /bin/bash -c "/opt/hadoop-3.1.2/bin/hdfs namenode";
            echo "Namenode service on namenode is up"; sleep 3;
            docker exec -u yarn -d namenode_namenode_1 /bin/bash -c "/opt/hadoop-3.1.2/bin/yarn resourcemanager";
